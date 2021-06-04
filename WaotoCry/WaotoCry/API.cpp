@@ -1,4 +1,4 @@
-﻿
+
 #include "include/API.h"
 
 //创建日志文件夹
@@ -138,6 +138,9 @@ void windows_time() {
 	cout << sys.wMinute << "分";
 	cout << sys.wSecond << "秒" << endl;
 }
+
+
+
 
 
 
