@@ -1,4 +1,5 @@
 #include "include/COIN.h"
+#include "include/API.h"
 #pragma warning(disable : 4996)
 
 //const char* ETH = "";
@@ -48,7 +49,7 @@ void setcolor(unsigned short color)
 
 
 //string userlc;
-//开机自启动
+//驴陋禄煤脳脭脝么露炉
 //void AutoStart()
 //{
 //	char Driver[MAX_PATH];
