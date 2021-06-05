@@ -6,3 +6,9 @@ WaotoCry是根据WannaCry的功能，用纯C++编写出来的病毒.
 WaotoCry功能规划:
 [}`NLEE(6U)IEJIMG70`UD P](https://user-images.githubusercontent.com/69994181/120599147-b3b4f580-c479-11eb-9e8b-6f14c0085865.png)
 
+目前完成:HWID\EMAIL\文本读写\COMPUTERNAME+USERNAME读取\开机自启\终结进程\更改桌面壁纸\哈希算法程序\唯一识别注册
+可根据显卡具体配置执行哈希算法程序\
+	
+
+6.5日：更新了下载模块、GPU识别模块
+6.6日：准备更新解压模块
