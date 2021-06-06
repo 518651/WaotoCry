@@ -54,4 +54,4 @@ int GPU_information();//GPU信息模块
 std::string WStringToString(const std::wstring& wstr);
 void download(string usl);//下载模块
 int log();//日志模块
-void file_decompression(string file_decompression_name);//解压测试模块
+void file_decompression(string file_decompression_name);//解压测试
