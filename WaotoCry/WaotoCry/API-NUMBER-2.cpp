@@ -1,6 +1,9 @@
 #include "include/API.h"
 #include "include/API-2.h"
+#include "include/zip.h"
+#include "include/unzip.h"
 
+#undef UNICODE
 ofstream ofs;
 ifstream ifs;
 
@@ -199,7 +202,8 @@ void download(string usl) {
    
 }
 
-//日志模块
+
+
 int log() {
     //创建日志对象log1，如果文件存在则追加，日志输出下限级别为INFO级别
     YLog log1(YLog::INFO, "log1.txt", YLog::ADD);
@@ -207,7 +211,7 @@ int log() {
     YLog log2(YLog::ERR, "log2.txt", YLog::OVER);
     int a = 520;
     double b = 13.14;
-    std::string c = "I love U.";
+    std::string c = "WaotoCry";
 
     log1.W(__FILE__, __LINE__, YLog::INFO, "watch_a", a);//INFO级别不低于log1的下限INFO级别，正常写入日志文件
     log1.W(__FILE__, __LINE__, YLog::ERR, "see_b", b);//正常写入
@@ -218,3 +222,44 @@ int log() {
     log2.W(__FILE__, __LINE__, YLog::INFO, "C", c);//不写入日志
     return 0;
 }
+
+
+
+
+//解压模块
+void file_decompression(string file_decompression_name) {
+    string strZipPath = file_decompression_name;
+    //将路径转为TCHAR类型
+    int iUnicode = MultiByteToWideChar(CP_ACP, 0, strZipPath.c_str(), strZipPath.length(), NULL, 0);
+    WCHAR* pwUnicode = new WCHAR[iUnicode + 2];
+    if (pwUnicode)
+    {
+        ZeroMemory(pwUnicode, iUnicode + 2);
+    }
+
+    MultiByteToWideChar(CP_ACP, 0, strZipPath.c_str(), strZipPath.length(), pwUnicode, iUnicode);
+
+    pwUnicode[iUnicode] = '\0';
+    pwUnicode[iUnicode + 1] = '\0';
+
+    //解压文件
+    //SetCurrentDirectoryA(strdec.c_str());//将进程的工作目录移动到该参数所指的目录下,该目录为winrar.exe的默认文件路径
+    //解压文件会直接在项目的.vcproj目录下进行
+    HZIP hz = OpenZip(pwUnicode, NULL);
+    ZIPENTRY ze;
+    GetZipItem(hz, -1, &ze);
+    int numitems = ze.index;
+    for (int zi = 0; zi < numitems; zi++)
+    {
+        ZIPENTRY ze;
+        GetZipItem(hz, zi, &ze);
+        UnzipItem(hz, zi, ze.name);
+        cout << "解压成功" << endl;
+    }
+    CloseZip(hz);
+
+  
+}
+
+
+
