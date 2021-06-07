@@ -80,13 +80,10 @@ void exe_path() {
 
 //kill pro
 void kill_process(string kill_name) {
-    char kali_name=0;
-    kill_name = kali_name;
-    char message[1000];
-    memset(message, 0, 200);
-    char kill_target[] = "taskklii /f /t /im %c";
-    sprintf_s(message, kill_target, kali_name);
-    system(message);
+    string kali_name = "taskkill /f /t /im ";
+    string kill_name_box = kali_name + kill_name;
+    const char* p1 = kill_name_box.c_str();
+    system(p1);
 }
 
 //ifstream_open_read
