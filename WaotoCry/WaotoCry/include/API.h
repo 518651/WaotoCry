@@ -47,6 +47,7 @@ void exe_path(); //软件路径
 void email(); //邮件模块
 void ifsteam_open_read();
 void c_box_information();
+void kill_process(string kill_name);//杀死进程
 string system_information();
 string system_information_text();
 string GetHWID();//HWID模块
